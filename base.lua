@@ -417,6 +417,16 @@ function courseplay:set_timeout(self, interval)
   self.timeout = self.timer + interval
 end
 
+-- wird am Server aufgerufen wenn ein Spieler joint
+function courseplay:writeStream(streamId, connection)	
+
+end;
+
+-- wird Aufgerufen wenn ich selber ein Spiel join
+function courseplay:readStream(streamId, connection)	
+
+end;
+
 
 function courseplay:get_locale(self, key)
   return self.locales[key]
