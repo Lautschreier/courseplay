@@ -368,101 +368,25 @@ function courseplay:draw()
 
     courseplay:showHud(self)
     
-  --[[	if InputBinding.hasEvent(InputBinding.AHInput3) then         -- only for testing
-		self.testhe = not self.testhe
-	end
-
-    
-    
-   if self.testhe then
-     -- local mnum = table.getn(self.attachedImplements)
-	--	for i=1, mnum do
-	     --   print("\nAttachedImplement\n")
-		--	for k,v in pairs (self.attachedImplements[1])  do
-		--	print(k.." "..tostring(v).." "..type(v))
-		--	end
-	    	print("\nSelf\n")
-			for k,v in pairs (self)  do
-			print(k.." "..tostring(v).." "..type(v))
-			end
-			print("\nWheels\n")
-			for k,v in pairs (self.owner)  do
-			print(k.." "..tostring(v).." "..type(v))
-			end
-			print("\nMission\n")
-			for k,v in pairs (g_currentMission)  do
-			print(k.." "..tostring(v).." "..type(v))
-			end   ]]
-		--[[		print("\nTrigger\n")
-			local z=0;
-			for k,v in pairs(g_currentMission.chatMessages) do
-				z=z+1;
-				print("TipTrigger: " .. tostring(z));
-				print(tostring(k) .."("..type(v)..")="..tostring(v));
-				for i,j in pairs(g_currentMission.chatMessages[k]) do
-					print(tostring(i).."("..type(j)..")="..tostring(j));
-				end;
-			end; ]]
-		--	if g_currentMission.hasRefuelStationInRange then
-		--	    g_currentMission:startRefuel(true)
-		--	end
-	--		if g_currentMission.hasRefuelStationInRange then
-		--	    g_currentMission:stopRefuel()
-		--	end
-				--local mnum2 =  table.getn(self.attachedImplements[i].object.SprayerFillActivatable)
-               --[[     print("\nChat Messages\n")
-					for k,v in pairs (g_currentMission.chatMessages)  do
-				    	 print(k.." "..tostring(v).." "..type(v))
-				    end
-				    print("\nGame Messages\n")
-					for k,v in pairs (g_currentMission.inGameMessage)  do
-				    	 print(k.." "..tostring(v).." "..type(v))
-				    end ]]
-				  --  print(string.format("FillLevel: %d ",self.fuelFillLevel ))
-			--	sprayerFillActivatable:getIsActivatable()
-			--end
-	--	end
-		--updateActivateText()
-				--		local testmax= table.getn(self.attachedImplements[1].object.sprayerFillActivatable)
-		          --  for i=1,testmax do
-		            --	    for k,v in pairs (self.attachedImplements[1].object.sprayerFillActivatable) do -- for test
-					--			print(k.." "..tostring(v).." "..type(v))
-					--		end
-					--	end
-	--	self.testhe = false
-		
-	--	if self.attachedImplements[1].object.isSprayerFilling == false then
-	--	self.attachedImplements[1].object.sprayerFillActivatable:onActivateObject()
-	--	self.testhe = false
-		--end
-   -- end                 -- only for testing
     
 end
 
 -- is been called everey frame
 function courseplay:update(dt)
-	--attached or detached implement?
-	if self.tools_dirty then
-	  courseplay:reset_tools(self)
-	end
 	
-	--if self.user_input_active == true then
-	--  if self.currentGui == nil then
-	--    g_gui:loadGui(Utils.getFilename("../aacourseplay/emptyGui.xml", self.baseDirectory), self.input_gui);
-	--    g_gui:showGui(self.input_gui);
-	--    self.currentGui = self.input_gui
-	--  end
-    --else
-    --  if self.currentGui == self.input_gui then
-    --    g_gui:showGui("");
-    --  end
-    --end
-    
     if self.user_input_message then
       courseplay:user_input(self);
     end
 
-	-- show visual waypoints only when in vehicle
+end		
+
+function courseplay:updateTick(dt)
+  --attached or detached implement?
+	if self.tools_dirty then
+	  courseplay:reset_tools(self)
+	end
+
+  -- show visual waypoints only when in vehicle
 	if self.isEntered then
 		courseplay:sign_visibility(self, true)
 	else
@@ -480,8 +404,8 @@ function courseplay:update(dt)
 	end	
 	
 	courseplay:infotext(self);
-	self.timer = self.timer + 1
-end		
+	self.timer = self.timer + 1	
+end
 
 function courseplay:delete()
 	if self.aiTrafficCollisionTrigger ~= nil then

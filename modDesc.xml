@@ -19,7 +19,7 @@
 		www.modhoster.de]]>
 		</de>
  	</description>
-    	<multiplayer supported="false"/>   
+    	<multiplayer supported="true"/>   
 	<iconFilename>
 		<en>store.png</en>
 		<de>store.png</de>
@@ -415,6 +415,7 @@
 		<sourceFile filename="triggers.lua" />
 		<sourceFile filename="hud.lua" />
 		<sourceFile filename="settings.lua" />
+		<sourceFile filename="event.lua" />
     </extraSourceFiles>   
 
 	<inputBindings>
