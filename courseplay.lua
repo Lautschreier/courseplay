@@ -22,6 +22,7 @@ source(courseplay_path.."recording.lua")
 -- drive Modes
 source(courseplay_path.."mode1.lua")
 source(courseplay_path.."mode2.lua")
+source(courseplay_path.."mode4.lua")
 
 -- course recording & resetting
 source(courseplay_path.."drive.lua")
